@@ -1,7 +1,10 @@
-# Product Requirement Document (PRD): RecallTutor
-**Product:** RecallTutor  
-**System:** Deterministic Agentic State & Granular Question-Type Memory Architecture  
-**Author:** Uditanshu Singh  
+ # Product Requirement Document (PRD): RecallTutor
+**Product:** RecallTutor  
+
+**System:** Deterministic Agentic State & Granular Question-Type Memory Architecture  
+
+**Author:** Uditanshu Singh 
+
 **Status:** Functional Prototype (In Progress / Active Testing)
 
 ---
@@ -52,98 +55,78 @@ When the learner returns for revision, the runtime engine injects a compact stat
 * **Full Conversation Transcript Archiving:** The system will not store, embed, or re-inject thousands of raw conversational tokens; it persists only structured state tags.
 * **Subjective Essay & Long-Form Writing Evaluation:** While the underlying Gemini model can answer queries across any academic subject, RecallTutor’s state and memory tracking are intentionally optimized for question-and-answer problem-solving (math, data insights, logic), not grading subjective essays.
 
+### 3.3 Autonomy Envelope & Human-in-the-Loop (HITL) Boundaries to formally classify agent authority:
+* Autonomous Actions: Generating chat titles, running background exchange extractions (learnFromExchange), and pruning memory FIFO tokens.
+* Human-in-the-Loop (HITL) Actions: Advancing problem difficulty, validating solution accuracy checkpoints, and marking topics as mastered (the agent cannot skip checkpoints without user confirmation)
+
 ---
+
 
 ## 4. System Architecture & Information Flow
 
 ### 4.1 System Layout & Component Topology
 ```text
 ┌─────────────────────────── RecallTutor Client (Mobile-First Web App) ───────────────────────────┐
-│                                                                                                 │
-│  ┌──────────────────────┐  ┌────────────────────────────────────┐  ┌──────────────────────────┐  │
-│  │ Left Nav Drawer      │  │ Main Interaction View              │  │ Right Memory Sidebar     │  │
-│  ├──────────────────────┤  ├────────────────────────────────────┤  ├──────────────────────────┤  │
-│  │ • [+ New Chat]       │  │ • Top Header (Avatar & Profile)    │  │ "What I Remember"        │  │
-│  │ • Recents List       │  │ • Doc Upload (Syllabus/Notes)      │  │                          │  │
-│  │   (Tab-based routing │  │ • Conversational Chat Stream       │  │ 1. Weak Spots            │  │
-│  │    without remounts) │  │ • Input Bar                        │  │ 2. Mastered Topics       │  │
-│  │                      │  │                                    │  │ 3. Preferred Explanation │  │
-│  └──────────┬───────────┘  └─────────────────┬──────────────────┘  └────────────▲─────────────┘  │
+│                                                                                                  │
+│  ┌──────────────────────┐  ┌────────────────────────────────────┐  ┌──────────────────────────┐  │
+│  │ Left Nav Drawer      │  │ Main Interaction View              │  │ Right Memory Sidebar     │  │
+│  ├──────────────────────┤  ├────────────────────────────────────┤  ├──────────────────────────┤  │
+│  │ • [+ New Chat]       │  │ • Top Header (Avatar & Profile)    │  │ "What I Remember"        │  │
+│  │ • Recents List       │  │ • Doc Upload (Syllabus/Notes)      │  │                          │  │
+│  │   (Tab-based routing │  │ • Conversational Chat Stream       │  │ 1. Weak Spots            │  │
+│  │    without remounts) │  │ • Input Bar                        │  │ 2. Mastered Topics       │  │
+│  │                      │  │                                    │  │ 3. Preferred Explanation │  │
+│  └──────────┬───────────┘  └─────────────────┬──────────────────┘  └────────────▲─────────────┘  │
 └─────────────┼────────────────────────────────┼──────────────────────────────────┼─────────────┘
-              │                                │                                  │
-              │ (First Turn: Auto-Title)       │ (User Message)                   │ (Reactive Query:
-              ▼                                ▼                                  │  conversation_id =
-     [ Utility LLM Prompt ]          [ Runtime LLM Engine ]                       │  activeConversationId)
-       (3–5 Word Summary)                      │                                  │
-              │                                │ (Turn Completion)                │
-              │                                ▼                                  │
-              │                      [ learnFromExchange ]                        │
-              │                      (Background Extractor)                       │
-              │                                │                                  │
-              │                                │ (Silent Fallback on Parse Error) │
-              ▼                                ▼                                  │
-     ┌────────────────────────────────────────────────────────────────────────┐  │
-     │                      Supabase Backend (PostgreSQL)                     │  │
-     │  ┌──────────────────────────────┐    ┌──────────────────────────────┐  │  │
-     │  │     conversations Table      │◄───┤    student_memories Table    ├───┴──┘
-     │  │ (id, user_id, title, dates)  │ FK │ (id, conversation_id, topic, │    
-     │  │                              │    │  category, notes)            │    
-     │  └──────────────────────────────┘    └──────────────────────────────┘    
-     └─────────────────────────────────────────────────────────────────────────┘
+              │                                │                                  │
+              │ (First Turn: Auto-Title)       │ (User Message)                   │ (Reactive Query:
+              ▼                                ▼                                  │  conversation_id =
+     [ Utility LLM Prompt ]          [ Runtime LLM Engine ]                       │  activeConversationId)
+       (3–5 Word Summary)                      │                                  │
+              │                                │ (Turn Completion)                │
+              │                                ▼                                  │
+              │                      [ learnFromExchange ]                        │
+              │                      (Background Extractor)                       │
+              │                                │                                  │
+              │                                │ (Silent Fallback on Parse Error) │
+              ▼                                ▼                                  │
+      ┌────────────────────────────────────────────────────────────────────────┐  │
+      │                     Supabase Backend (PostgreSQL)                      │  │
+      │  ┌──────────────────────────────┐    ┌──────────────────────────────┐  │  │
+      │  │     conversations Table      │◄───┤    student_memories Table    ├───┴──┘
+      │  │ (id, user_id, title, dates)  │ FK │ (id, conversation_id, topic, │   
+      │  │                              │    │  category, notes)            │   
+      │  └──────────────────────────────┘    └──────────────────────────────┘   
+      └─────────────────────────────────────────────────────────────────────────┘
 ```
+
 ### 4.2 Step-by-Step Data Pipelines
 
-
-
 #### 4.2.1. Starting a Session and Naming the Chat
-
 * **Clean State Reset:** When the student clicks `+ New chat`, the screen resets completely. The chat window clears, and the memory sidebar empties out so there is zero leftover data from past topics.
-
 * **Dynamic Auto-Titling:** Once the student sends their very first message, a quick background prompt reads that message, summarizes it into a 3 to 5-word title (e.g., *"Bayes' Theorem & Traps"*), and applies that title to the left sidebar—all without the page reloading or blinking.
 
-
-
 #### 4.2.2. The Live Tutoring Exchange
-
 * **Active Dialogue:** The student chats with the tutor, solving GMAT quantitative or logic questions, or uploading notes and mistake logs.
-
 * **Scoped Context:** The tutor focuses strictly on this active chat so responses stay fast, without dragging in unrelated conversation history from other days.
 
-
-
 #### 4.2.3. Extracting Memory in the Background
-
 * After an exchange wraps up, a background prompt reviews the dialogue to isolate three key signals:
-
-  * **Weak Spots:** The exact calculation trap or misconception the student fell into.
-
-  * **Mastered Topics:** What the student solved cleanly and understood.
-
-  * **Preferred Explanations:** The format that made the concept click (e.g., using a 2x2 grid with 100,000 people instead of a dry formula).
-
+  * **Weak Spots:** The exact calculation trap or misconception the student fell into.
+  * **Mastered Topics:** What the student solved cleanly and understood.
+  * **Preferred Explanations:** The format that made the concept click (e.g., using a 2x2 grid with 100,000 people instead of a dry formula).
 * **Crash Prevention:** If the AI outputs broken text or formatting errors instead of clean data, the app silently drops the payload (`error: null`). This prevents the user's screen from freezing, throwing red error banners, or crashing.
 
-
-
 #### 4.2.4. Keeping Chats Isolated (No Memory Bleed)
-
 * **Thread Scoping:** The right sidebar ("What I Remember About You") only displays the memories attached to the specific chat currently active.
-
 * **Context Integrity:** When switching from a "Bayes' Theorem" chat to a "Time & Distance" chat, the sidebar updates instantly to show only "Time & Distance" notes. Concepts never bleed into each other across sessions.
 
-
 ### 4.3 The Storage Logic (How Supabase Handles It)
-
 In relational terms, the data architecture relies on two connected tables in Supabase:
-
 * **The Conversations List (`conversations`):** Stores the chat ID, user ID, chat title, and timestamp created.
-
 * **The Memories List (`student_memories`):** Stores the individual atomic notes (`weakness`, `mastery`, or `preference`), linked via a foreign key (`conversation_id`) to the specific conversation it belongs to.
 
-
-
-Because each note is explicitly tagged with that `conversation_id`, clicking a chat in the sidebar only pulls up records belonging to that unique thread. 
-
+Because each note is explicitly tagged with that `conversation_id`, clicking a chat in the sidebar only pulls up records belonging to that unique thread. }
 
 ---
 
@@ -157,21 +140,17 @@ When a student asks for help on a topic or problem, the tutor guides them step b
 
 ### 5.3 FR-3 Background Memory Extraction (`learnFromExchange`)
 The moment the tutor finishes streaming an answer, an async background agent inspects the exchange and writes new takeaways to `student_memories`.
-
 It categorizes signals into three buckets:
 * `weakness` captures calculation traps, missed constraints, or flawed logic
 * `mastery` captures rules or question variants solved correctly without help
 * `preference` captures learning formats like 2x2 grids or testing with 100 instead of variables
-
 Each entry stores the topic along with specific notes, tied to the active conversation ID. If the model outputs broken JSON or misses schema constraints, the handler swallows the exception with null error handling so the UI never freezes or throws crash toasts[cite: 1, 2].
-
 
 ### 5.4 FR-4 Thread Management and Clean State Reset
 Clicking "+ New chat" clears the conversation window, drops the active conversation pointer, and resets the memory sidebar back to zero. Past threads in the Recents list render as interactive button tabs rather than standard hyperlink tags. Clicking between them updates client state on the fly without remounting the sidebar or flashing empty state placeholders.
 
 ### 5.5 FR-5 Multi-Day Spaced Context Recall
 When a student reopens an old session days later, the app fetches that thread's records from `student_memories` and restores their weak spots, mastered rules, and preferred modalities in the right sidebar.
-
 When they send a new message in that thread, the engine bundles these active memory tags into the tutor's system prompt under a strict 200-token cap. The tutor immediately respects past pitfalls and teaching styles without forcing the student to re-brief the model.
 
 ---
@@ -179,23 +158,20 @@ When they send a new message in that thread, the engine bundles these active mem
 ## 6. Non-Functional Requirements (NFRs) & System Benchmarks
 
 ### 6.1 Latency and Response Performance
-The tutoring chat must feel instantaneous and natural. Time to first token for streaming responses should land under 1.2 seconds on standard broadband connections. 
-
-The background memory extraction agent runs completely asynchronously after a turn wraps up. It should finish parsing and committing tags within 3 seconds, without ever delaying the student from typing or sending their next prompt.
+The tutoring chat must feel instantaneous and natural. Time to first token for streaming responses should land under 1.2 seconds on standard broadband connections. The background memory extraction agent runs completely asynchronously after a turn wraps up. It should finish parsing and committing tags within 3 seconds, without ever delaying the student from typing or sending their next prompt.
 
 ### 6.2 Token Economics and Rate Limits
-To avoid hitting API rate limits and keep response times crisp, runtime memory injection is capped strictly at 200 input tokens. The system passes only distilled tags rather than raw chat history, keeping recurring inference lean and focused.
-
-If memory tags accumulate beyond the budget, the compiler applies a simple FIFO trim that keeps the most recent notes.
+To avoid hitting API rate limits and keep response times crisp, runtime memory injection is capped strictly at 200 input tokens. The system passes only distilled tags rather than raw chat history, keeping recurring inference lean and focused.If memory tags accumulate beyond the budget, the compiler applies a simple FIFO trim that keeps the most recent notes.
 
 ### 6.3 Reliability and Silent Error Handling
-Third-party models occasionally drop invalid characters or violate JSON structures. The extraction pipeline runs inside an isolated try-catch block. 
-
-If parsing fails, the system returns a null error object, logs the incident quietly in the background, and drops the write[cite: 1, 2]. Under no circumstances should a background parsing issue trigger an error modal, red toast, or input freeze on the student's screen[cite: 1, 2].
+Third-party models occasionally drop invalid characters or violate JSON structures. The extraction pipeline runs inside an isolated try-catch block. If parsing fails, the system returns a null error object, logs the incident quietly in the background, and drops the write[cite: 1, 2]. Under no circumstances should a background parsing issue trigger an error modal, red toast, or input freeze on the student's screen[cite: 1, 2].
 
 ### 6.4 Data Privacy and Thread Sandboxing
-All database reads and writes must strictly enforce user and session boundaries. A conversation thread can only query records where both the user ID and conversation ID match the active session. 
-Switching chats immediately severs previous database subscriptions and clears local memory caches, ensuring zero cross-topic data leakage between different study subjects.
+All database reads and writes must strictly enforce user and session boundaries. A conversation thread can only query records where both the user ID and conversation ID match the active session. Switching chats immediately severs previous database subscriptions and clears local memory caches, ensuring zero cross-topic data leakage between different study subjects.
+
+### 6.5 Out-of-Domain Guardrails & Offline Eval Suite
+* **Out-of-Domain (OOD) Steering:** If a learner prompts the tutor for non-GMAT tasks (such as general software development, creative writing, or trivia), the system prompt steers them back to Quantitative and Data Insights prep.
+* **Offline Eval Benchmark Suite:** Evaluates `learnFromExchange` extraction accuracy across a golden test set of 40+ prompt scenarios to verify schema fidelity, category classification, and prevent regressions before production deployment.
 
 ---
 
@@ -211,20 +187,16 @@ Every study session is treated as an isolated conversational thread.
 * **Session Lifecycle:** Tracks creation and last active timestamps to power the Recents navigation list.
 
 ### 7.2 Discrete Memory Entity & Data Contract
-Memory in RecallTutor is atomic and structured. Rather than relying on fuzzy vector embeddings, takeaways are persisted as discrete entities linked directly to the parent session.
-
-The background extraction worker enforces this exact JSON schema contract before persisting records to storage:
+Memory in RecallTutor is atomic and structured. Rather than relying on fuzzy vector embeddings, takeaways are persisted as discrete entities linked directly to the parent session.The background extraction worker enforces this exact JSON schema contract before persisting records to storage:
 
 ```
 JSON
 {
   "category": "weakness | mastery | preference",
   "topic": "string",
-  "notes": "string"
+  "notes": "string (max 120 chars)"
 }
-
 ```
-
 * **Thread Scope:** Tied directly to the active session ID, ensuring zero cross-subject memory bleed.
 * **Taxonomy Bucket:** Restricted strictly to weakness, mastery, or preference.
 * **Topic Anchor:** The specific problem type or sub-mechanic practiced (such as Bayes' Theorem or Distance and Work-Rate).
@@ -234,3 +206,55 @@ JSON
 ### 7.3 State Lifecycle and Memory Sandboxing
 * **Thread Sandboxing:** The agent only queries memory rows tied to the active session ID. Switching chats unbinds previous context immediately, ensuring clean isolation between topics.
 * **Cascading Cleanup:** Deleting a study session from history automatically purges all attached memory tags, leaving no orphaned student data in storage.
+
+---
+
+## 8. Product Health & Success Metrics
+
+We measure RecallTutor on three practical levels: are students sticking to their spaced revision habits (L0), is the tutor accurately remembering their past mistakes and teaching preferences (L1), and is the app responding quickly without breaking (L2)?
+
+### 8.1 L0: Study Habits & Retention
+* **7-Day Return Rate:** Do students return after a week to review concepts they previously struggled with?
+  * *Target:* At least 40% of active learners return for a spaced practice session after 7 days.
+* **Drill Completion Rate:** Do students work through a problem checkpoint until they reach the final answer, rather than abandoning the chat midway?
+  * *Target:* At least 85% of started practice sessions are completed.
+
+### 8.2 L1: Memory & Tutoring Quality
+* **Zero-Reprompt Sessions:** Can a returning student jump straight into practice without spending the first five minutes reminding the AI what they studied or correcting its assumptions?
+  * *Target:* At least 90% of returning sessions require zero briefing or setup from the student.
+* **Question-Type Recall Accuracy:** When reviewing a past weak spot, does the tutor test the exact problem sub-type they struggled with (such as base-rate traps in Data Sufficiency) without inventing random, irrelevant variants?
+  * *Target:* 100% accurate recall with zero hallucinated question types.
+* **Explanation Style Match:** Does the tutor stick to the student's favored explanation format (such as 2x2 grids with concrete numbers instead of abstract formulas) without needing a reminder?
+  * *Target:* At least 95% of explanations default to the saved preference.
+
+### 8.3 L2: Speed & System Health
+* **Memory Save Reliability:** Does the background worker parse and store takeaways into the database cleanly without dropping notes?
+  * *Target:* At least 99% of memory extractions save successfully.
+* **Response Speed:** How fast the tutor starts streaming its response so the back-and-forth feels natural.
+  * *Target:* Under 1.5 seconds to start answering.
+* **Memory Token Footprint:** Keeping saved notes short and sweet so the tutor stays focused, responses remain fast, and API costs stay low.
+  * *Target:* Average under 150 tokens (strictly capped at 200 tokens).
+
+---
+
+## 9. Product Roadmap
+
+The roadmap focuses on what solves our immediate study friction today (Now), what makes daily practice smoother next (Next), and bigger vision ideas down the line (Later).
+
+### 9.1 Now: Current MVP
+* **Step-by-Step Problem Solving:** The tutor walks through math and logic problems checkpoint by checkpoint, waiting for the student to confirm each step rather than dumping the full solution upfront.
+* **Automatic Note-Taking in the Background:** After an exchange, a background worker quietly picks up calculation traps, mastered rules, and preferred explanation styles, saving them directly to the database.
+* **Zero Topic Bleed:** Separate chat threads stay completely isolated so notes from a Bayes' Theorem session never spill into a Speed, Time & Distance chat.
+* **Fast, Lightweight Memory Injection:** Re-injects saved takeaways in under 200 tokens when returning to a thread, keeping responses snappy and API costs low.
+* **Instant Thread Titling:** Automatically renames new chats into clean 3-to-5-word titles after the first message without page reloads or screen flicker.
+
+### 9.2 Next: Planned for v1.1
+* **Uploading Notes & Mistake Logs (`Doc Upload`):** Letting students drop in screenshots of mock test errors or syllabus notes so the tutor knows what traps to target before the chat even starts.
+* **Target Score & Exam Profile (`Avatar & Profile`):** A simple settings modal to track target test dates, baseline section scores, and default explanation preferences.
+* **Click-to-Edit Memory Sidebar:** Giving students full control to click, edit, or delete any note in the "What I Remember About You" sidebar if their habits change or a note is outdated.
+* **Dropped Connection Handling:** A clean retry button if the streaming response drops mid-explanation so the student never loses their place.
+
+### 9.3 Later: Future Horizons (v2.0)
+* **Master Revision Dashboard:** A single view that pulls together recurring weak spots across every past chat into one targeted practice drill.
+* **Spaced Review Nudges:** Optional reminders when a topic where you made repeated errors hits the 7-day or 14-day spaced revision mark.
+* **Support for Other Exams:** Expanding the question taxonomy beyond GMAT Quant and Data Insights to tests like GRE or CAT.
