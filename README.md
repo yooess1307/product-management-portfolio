@@ -22,7 +22,7 @@ End-to-end technical specifications, state architectures, and functional prototy
   *Deterministic Agentic State & Memory Architecture for High-Stakes Exam Prep.*  
   * **Core Problem:** Standard LLM tutoring sessions suffer from context amnesia and question-type hallucination over multi-day spaced repetition intervals.  
   * **Solution:** Replaced stateless chat with an asynchronous extraction worker (`learnFromExchange`) linked via Supabase, enforcing typed state schemas and micro-prompt injection (<150 tokens).  
-  * **Deliverables:** [Full Technical PRD](./agentic-ai-projects/recall-tutor/PRD.md) • [Live Prototype & Demo Specs]([./agentic-ai-projects/recall-tutor/PROTOTYPE.md](https://recall-buddy-00.lovable.app))
+ * **Deliverables:** [Full Technical PRD](./agentic-ai-projects/recall-tutor/PRD.md) • [Live Prototype ↗](https://recall-buddy-00.lovable.app)
 
 * **[Conversational Voice AI Agent](./agentic-ai-projects/conversational-voice-ai/SYSTEM_SPEC.md)**  
   *Low-Latency Voice Architecture & Real-Time Orchestration.*  
