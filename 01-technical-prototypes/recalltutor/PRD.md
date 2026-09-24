@@ -55,7 +55,7 @@ When the learner returns for revision, the runtime engine injects a compact stat
 * **Full Conversation Transcript Archiving:** The system will not store, embed, or re-inject thousands of raw conversational tokens; it persists only structured state tags.
 * **Subjective Essay & Long-Form Writing Evaluation:** While the underlying Gemini model can answer queries across any academic subject, RecallTutor’s state and memory tracking are intentionally optimized for question-and-answer problem-solving (math, data insights, logic), not grading subjective essays.
 
-### 3.3 Autonomy Envelope & Human-in-the-Loop (HITL) Boundaries to formally classify agent authority:
+### 3.3 Autonomy Envelope & Human-in-the-Loop (HITL) Boundaries
 * Autonomous Actions: Generating chat titles, running background exchange extractions (learnFromExchange), and pruning memory FIFO tokens.
 * Human-in-the-Loop (HITL) Actions: Advancing problem difficulty, validating solution accuracy checkpoints, and marking topics as mastered (the agent cannot skip checkpoints without user confirmation)
 
@@ -126,7 +126,7 @@ In relational terms, the data architecture relies on two connected tables in Sup
 * **The Conversations List (`conversations`):** Stores the chat ID, user ID, chat title, and timestamp created.
 * **The Memories List (`student_memories`):** Stores the individual atomic notes (`weakness`, `mastery`, or `preference`), linked via a foreign key (`conversation_id`) to the specific conversation it belongs to.
 
-Because each note is explicitly tagged with that `conversation_id`, clicking a chat in the sidebar only pulls up records belonging to that unique thread. }
+Because each note is explicitly tagged with that `conversation_id`, clicking a chat in the sidebar only pulls up records belonging to that unique thread. 
 
 ---
 
@@ -164,7 +164,7 @@ The tutoring chat must feel instantaneous and natural. Time to first token for s
 To avoid hitting API rate limits and keep response times crisp, runtime memory injection is capped strictly at 200 input tokens. The system passes only distilled tags rather than raw chat history, keeping recurring inference lean and focused.If memory tags accumulate beyond the budget, the compiler applies a simple FIFO trim that keeps the most recent notes.
 
 ### 6.3 Reliability and Silent Error Handling
-Third-party models occasionally drop invalid characters or violate JSON structures. The extraction pipeline runs inside an isolated try-catch block. If parsing fails, the system returns a null error object, logs the incident quietly in the background, and drops the write[cite: 1, 2]. Under no circumstances should a background parsing issue trigger an error modal, red toast, or input freeze on the student's screen[cite: 1, 2].
+Third-party models occasionally drop invalid characters or violate JSON structures. The extraction pipeline runs inside an isolated try-catch block. If parsing fails, the system returns a null error object, logs the incident quietly in the background, and drops the write. Under no circumstances should a background parsing issue trigger an error modal, red toast, or input freeze on the student's screen.
 
 ### 6.4 Data Privacy and Thread Sandboxing
 All database reads and writes must strictly enforce user and session boundaries. A conversation thread can only query records where both the user ID and conversation ID match the active session. Switching chats immediately severs previous database subscriptions and clears local memory caches, ensuring zero cross-topic data leakage between different study subjects.
@@ -189,8 +189,7 @@ Every study session is treated as an isolated conversational thread.
 ### 7.2 Discrete Memory Entity & Data Contract
 Memory in RecallTutor is atomic and structured. Rather than relying on fuzzy vector embeddings, takeaways are persisted as discrete entities linked directly to the parent session.The background extraction worker enforces this exact JSON schema contract before persisting records to storage:
 
-```
-JSON
+```json
 {
   "category": "weakness | mastery | preference",
   "topic": "string",
