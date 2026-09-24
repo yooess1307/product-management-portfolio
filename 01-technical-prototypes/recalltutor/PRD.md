@@ -56,8 +56,8 @@ When the learner returns for revision, the runtime engine injects a compact stat
 * **Subjective Essay & Long-Form Writing Evaluation:** While the underlying Gemini model can answer queries across any academic subject, RecallTutor’s state and memory tracking are intentionally optimized for question-and-answer problem-solving (math, data insights, logic), not grading subjective essays.
 
 ### 3.3 Autonomy Envelope & Human-in-the-Loop (HITL) Boundaries
-* Autonomous Actions: Generating chat titles, running background exchange extractions (learnFromExchange), and pruning memory FIFO tokens.
-* Human-in-the-Loop (HITL) Actions: Advancing problem difficulty, validating solution accuracy checkpoints, and marking topics as mastered (the agent cannot skip checkpoints without user confirmation)
+* **Autonomous Actions:** Generating chat titles, running background exchange extractions (`learnFromExchange`), and pruning memory FIFO tokens.
+* **Human-in-the-Loop (HITL) Actions:** Advancing problem difficulty, validating solution accuracy checkpoints, and marking topics as mastered (the agent cannot skip checkpoints without user confirmation).
 
 ---
 
@@ -144,7 +144,7 @@ It categorizes signals into three buckets:
 * `weakness` captures calculation traps, missed constraints, or flawed logic
 * `mastery` captures rules or question variants solved correctly without help
 * `preference` captures learning formats like 2x2 grids or testing with 100 instead of variables
-Each entry stores the topic along with specific notes, tied to the active conversation ID. If the model outputs broken JSON or misses schema constraints, the handler swallows the exception with null error handling so the UI never freezes or throws crash toasts[cite: 1, 2].
+Each entry stores the topic along with specific notes, tied to the active conversation ID. If the model outputs broken JSON or misses schema constraints, the handler swallows the exception with null error handling so the UI never freezes or throws crash toasts.
 
 ### 5.4 FR-4 Thread Management and Clean State Reset
 Clicking "+ New chat" clears the conversation window, drops the active conversation pointer, and resets the memory sidebar back to zero. Past threads in the Recents list render as interactive button tabs rather than standard hyperlink tags. Clicking between them updates client state on the fly without remounting the sidebar or flashing empty state placeholders.
@@ -161,7 +161,7 @@ When they send a new message in that thread, the engine bundles these active mem
 The tutoring chat must feel instantaneous and natural. Time to first token for streaming responses should land under 1.2 seconds on standard broadband connections. The background memory extraction agent runs completely asynchronously after a turn wraps up. It should finish parsing and committing tags within 3 seconds, without ever delaying the student from typing or sending their next prompt.
 
 ### 6.2 Token Economics and Rate Limits
-To avoid hitting API rate limits and keep response times crisp, runtime memory injection is capped strictly at 200 input tokens. The system passes only distilled tags rather than raw chat history, keeping recurring inference lean and focused.If memory tags accumulate beyond the budget, the compiler applies a simple FIFO trim that keeps the most recent notes.
+To avoid hitting API rate limits and keep response times crisp, runtime memory injection is capped strictly at 200 input tokens. The system passes only distilled tags rather than raw chat history, keeping recurring inference lean and focused. If memory tags accumulate beyond the budget, the compiler applies a simple FIFO trim that keeps the most recent notes.
 
 ### 6.3 Reliability and Silent Error Handling
 Third-party models occasionally drop invalid characters or violate JSON structures. The extraction pipeline runs inside an isolated try-catch block. If parsing fails, the system returns a null error object, logs the incident quietly in the background, and drops the write. Under no circumstances should a background parsing issue trigger an error modal, red toast, or input freeze on the student's screen.
@@ -187,7 +187,7 @@ Every study session is treated as an isolated conversational thread.
 * **Session Lifecycle:** Tracks creation and last active timestamps to power the Recents navigation list.
 
 ### 7.2 Discrete Memory Entity & Data Contract
-Memory in RecallTutor is atomic and structured. Rather than relying on fuzzy vector embeddings, takeaways are persisted as discrete entities linked directly to the parent session.The background extraction worker enforces this exact JSON schema contract before persisting records to storage:
+Memory in RecallTutor is atomic and structured. Rather than relying on fuzzy vector embeddings, takeaways are persisted as discrete entities linked directly to the parent session. The background extraction worker enforces this exact JSON schema contract before persisting records to storage:
 
 ```json
 {
