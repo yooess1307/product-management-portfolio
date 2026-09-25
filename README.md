@@ -35,28 +35,22 @@ End-to-end technical specifications, state architectures, and functional prototy
 ### 🔍 2. Product Teardowns & Turnaround Strategies
 Deep-dives into conversion bottlenecks, trust & safety friction, and strategic product pivots.
 
-* **[BlaBlaCar — Fixing the Last-Mile Coordination Gap](./teardowns-and-turnarounds/blablacar-communication/CASE_STUDY.md)**  
+* **BlaBlaCar — Fixing the Last-Mile Coordination Gap**  
   *Product Teardown, Trust & Safety UX, and Anonymized VoIP Architecture*  
-  * **The Problem:** In-app messaging lag at highway speeds backs users into a corner—forcing drivers and passengers to sacrifice their personal phone numbers off-platform just to pinpoint crowded pickup spots[cite: 16].  
-  * **The Fix:** Scoped an anonymized in-app VoIP calling MVP and pinpoint location sharing flow, backed by MoSCoW backlog prioritization, persona journey mapping, and verified App Store user complaints[cite: 16].  
-  * **Deliverables:** [Read Full Case Study](./teardowns-and-turnarounds/blablacar-communication/CASE_STUDY.md) • [LinkedIn Carousel ↗](https://lnkd.in/p/gtzZGCg5)
-
+  * **About the Platform:** A community-based carpooling platform connecting drivers with empty seats to passengers traveling long distances to share travel costs[cite: 15].  
+  * **The Problem:** In-app messaging lag at highway speeds backs users into a corner—forcing drivers and passengers to sacrifice their personal phone numbers off-platform just to coordinate crowded roadside pickups[cite: 15].  
+  * **The Fix:** Scoped an anonymized in-app VoIP calling MVP and pinpoint location sharing flow, backed by MoSCoW backlog prioritization, persona journey mapping, and verified App Store user complaints[cite: 15].  
+ * **Deliverables:** [View Slide Deck (PDF) ↗](./teardowns-and-turnarounds/BlaBlaCar_Product_Teardown_Last_Mile_Coordination.pdf) • [LinkedIn Post ↗](https://lnkd.in/p/gtzZGCg5)
 * **[CRED — Deal of the Day Checkout Optimization](./teardowns-and-turnarounds/cred-checkout-optimization/CASE_STUDY.md)**  
   *Funnel Teardown & Multi-Item Cart UX*  
-  * **The Problem:** CRED's single-item checkout loop forces shoppers to repeatedly unlock and pay for items one-by-one[cite: 13]. Primary survey data revealed 50% of users abandoned purchasing additional daily deals specifically due to repetitive checkout fatigue[cite: 13].  
-  * **The Fix:** Designed a unified "Add to Deal Cart" flow with single-transaction checkout, eliminating repetitive navigation loops and recovering lost basket size[cite: 13].  
+  * **The Problem:** CRED's single-item checkout loop forces shoppers to repeatedly unlock and pay for items one-by-one. Survey data revealed 50% of users abandoned purchasing additional daily deals due to repetitive checkout fatigue.  
+  * **The Fix:** Designed a unified "Add to Deal Cart" flow with single-transaction checkout, eliminating repetitive navigation loops and recovering lost basket size.  
   * **Deliverables:** [Read Funnel Teardown](./teardowns-and-turnarounds/cred-checkout-optimization/CASE_STUDY.md)
 
 * **[Google Glass — Audio-First Accessibility Pivot](./teardowns-and-turnarounds/google-glass-turnaround/STRATEGY_MEMO.md)**  
   *Failure Autopsy & Strategic Repositioning Memo*  
-  * **The Problem:** Google Glass collapsed under high hardware costs ($1,500), social stigma, and severe privacy backlash over public cameras—lacking a defensible consumer use case[cite: 14].  
-  * **The Fix:** Formulated a turnaround strategy stripping out the expensive visual prism to create a discreet, audio-first assistive wearable for visually impaired students, backed by primary user interviews and non-profit/government distribution channels[cite: 14].  
-  * **Deliverables:** [Read Strategy Memo](./teardowns-and-turnarounds/google-glass-turnaround/STRATEGY_MEMO.md)
-
----
-
-## 🛠️ Core Competencies & Tooling
-
-* **AI & Agentic Systems:** Structured Output Validation, Schema Enforcement, Context Budgeting, Model Provider Benchmarking (TTFT vs. Cost), Spoken Audio Prompt Guardrails.
+  * **The Problem:** Google Glass collapsed under high hardware costs ($1,500), social stigma, and severe privacy backlash over public cameras—lacking a defensible consumer use case.  
+  * **The Fix:** Formulated a turnaround strategy stripping out the expensive visual prism to create a discreet, audio-first assistive wearable for visually impaired students, backed by primary user interviews and non-profit/government distribution channels.  
+  * **Deliverables:** [Read Strategy Memo](./teardowns-and-turnarounds/google-glass-turnaround/STRATEGY_MEMO.md)put Validation, Schema Enforcement, Context Budgeting, Model Provider Benchmarking (TTFT vs. Cost), Spoken Audio Prompt Guardrails.
 * **Technical Product Specs:** Relational Data Modeling (PostgreSQL / Supabase), REST & Real-Time Event Flows, BDD Acceptance Criteria (`Given/When/Then`), MoSCoW Prioritization.
 * **Product Strategy & Growth:** Quantitative User Surveys, Funnel Teardowns, User Journey Mapping, Metric Trees ($L_0$ North Star to $L_2$ System Metrics), Market Viability Modeling.
