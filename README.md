@@ -21,8 +21,8 @@ End-to-end technical specifications, state architectures, and functional prototy
 * **[RecallTutor](./agentic-ai-projects/recall-tutor/PRD.md)**  
   *Deterministic Agentic State & Memory Architecture for High-Stakes Exam Prep.*  
   * **Core Problem:** Standard LLM tutoring sessions suffer from context amnesia and question-type hallucination over multi-day spaced repetition intervals.  
-  * **Solution:** Replaced stateless chat with an asynchronous extraction worker (`learnFromExchange`) linked via Supabase, enforcing typed state schemas and micro-prompt injection (<150 tokens).  
- * **Deliverables:** [Full Technical PRD](./agentic-ai-projects/recall-tutor/PRD.md) • [Live Prototype ↗](https://recall-buddy-00.lovable.app)
+  * **Solution:** Replaced stateless chat with an asynchronous extraction worker (`learnFromExchange`) linked via Supabase, enforcing typed state schemas and micro-prompt injection (<150 tokens).
+  * **Deliverables:** [Full Technical PRD](./agentic-ai-projects/recall-tutor/PRD.md) • [Live Prototype ↗](https://recall-buddy-00.lovable.app)
 
 * **VocabCoach — Voice-First Vocabulary Tutor**  
   *Spoken English Practice & Conversational Prompt Design*  
@@ -47,6 +47,11 @@ End-to-end technical specifications, state architectures, and functional prototy
      - If used incorrectly or unnaturally, gently explain the nuance, provide a corrected variation, and encourage them to try again.
   5. Tone: Warm, energetic, concise, and conversational. Avoid bullet points, symbols, or asterisks since this is spoken audio.
   ```
+* **[HireMate — AI-Powered Mock Interview Platform Launch Strategy](./HireMate_AI.pdf)**  
+  *0-to-1 Go-to-Market Sequencing, Freemium Monetization, and Organic Growth Loops*  
+  * **What It Is:** An AI interview copilot that provides role-specific mock interviews (tailored for roles like Product Managers and Software Engineers), structured multi-metric feedback reports (evaluating pace, filler words, and content quality), and industry benchmark scores against peer candidates.  
+  * **The Problem It Solves:** Job seekers deal with intense preparation anxiety and lack realistic, structured ways to practice. Human coaching is expensive and difficult to schedule, peer-to-peer mocks require coordinated availability, and generic online guides fail to give candidates objective, data-backed feedback on where their performance actually stands.  
+  * **The GTM Strategy:** A lean, 3-stage distribution roadmap designed to scale from 0 to 10,000 users in 6 months on a near-zero initial CAC.
   
 ---
 
