@@ -47,7 +47,7 @@ End-to-end technical specifications, state architectures, and functional prototy
      - If used incorrectly or unnaturally, gently explain the nuance, provide a corrected variation, and encourage them to try again.
   5. Tone: Warm, energetic, concise, and conversational. Avoid bullet points, symbols, or asterisks since this is spoken audio.
   ```
-* **[HireMate — AI-Powered Mock Interview Platform Launch Strategy](./HireMate_AI.pdf)**  
+* **[HireMate — AI-Powered Mock Interview Platform Launch Strategy](./HireMate_AI.pdf.pdf)**  
   *0-to-1 Go-to-Market Sequencing, Freemium Monetization, and Organic Growth Loops*  
   * **What It Is:** An AI interview copilot that provides role-specific mock interviews (tailored for roles like Product Managers and Software Engineers), structured multi-metric feedback reports (evaluating pace, filler words, and content quality), and industry benchmark scores against peer candidates.  
   * **The Problem It Solves:** Job seekers deal with intense preparation anxiety and lack realistic, structured ways to practice. Human coaching is expensive and difficult to schedule, peer-to-peer mocks require coordinated availability, and generic online guides fail to give candidates objective, data-backed feedback on where their performance actually stands.  
