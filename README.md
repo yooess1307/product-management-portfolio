@@ -33,20 +33,30 @@ End-to-end technical specifications, state architectures, and functional prototy
 ---
 
 ### 🔍 2. Product Teardowns & Turnaround Strategies
-Analytical deep-dives into conversion funnels, enterprise pivots, and growth bottlenecks.
+Deep-dives into conversion bottlenecks, trust & safety friction, and strategic product pivots.
 
-* **[CRED Checkout Flow Optimization](./teardowns-and-turnarounds/cred-checkout-funnel/CASE_STUDY.md)**  
-  *UX Teardown & Friction Reduction.*  
-  * Analysis of drop-off points within multi-stage checkout flows, proposing a consolidated intent-driven transaction funnel.
+* **[BlaBlaCar — Fixing the Last-Mile Coordination Gap](./teardowns-and-turnarounds/blablacar-communication/CASE_STUDY.md)**  
+  *Product Teardown, Trust & Safety UX, and Anonymized VoIP Architecture*  
+  * **The Problem:** In-app messaging lag at highway speeds backs users into a corner—forcing drivers and passengers to sacrifice their personal phone numbers off-platform just to pinpoint crowded pickup spots[cite: 16].  
+  * **The Fix:** Scoped an anonymized in-app VoIP calling MVP and pinpoint location sharing flow, backed by MoSCoW backlog prioritization, persona journey mapping, and verified App Store user complaints[cite: 16].  
+  * **Deliverables:** [Read Full Case Study](./teardowns-and-turnarounds/blablacar-communication/CASE_STUDY.md) • [LinkedIn Carousel ↗](https://lnkd.in/p/gtzZGCg5)
 
-* **[Google Glass: Enterprise Turnaround](./teardowns-and-turnarounds/google-glass-enterprise-pivot/STRATEGY_MEMO.md)**  
-  *Hardware-to-Software Strategic Pivot.*  
-  * Strategic memo analyzing consumer failure modes and formulating an audio-first enterprise pivot focused on industrial productivity.
+* **[CRED — Deal of the Day Checkout Optimization](./teardowns-and-turnarounds/cred-checkout-optimization/CASE_STUDY.md)**  
+  *Funnel Teardown & Multi-Item Cart UX*  
+  * **The Problem:** CRED's single-item checkout loop forces shoppers to repeatedly unlock and pay for items one-by-one[cite: 13]. Primary survey data revealed 50% of users abandoned purchasing additional daily deals specifically due to repetitive checkout fatigue[cite: 13].  
+  * **The Fix:** Designed a unified "Add to Deal Cart" flow with single-transaction checkout, eliminating repetitive navigation loops and recovering lost basket size[cite: 13].  
+  * **Deliverables:** [Read Funnel Teardown](./teardowns-and-turnarounds/cred-checkout-optimization/CASE_STUDY.md)
+
+* **[Google Glass — Audio-First Accessibility Pivot](./teardowns-and-turnarounds/google-glass-turnaround/STRATEGY_MEMO.md)**  
+  *Failure Autopsy & Strategic Repositioning Memo*  
+  * **The Problem:** Google Glass collapsed under high hardware costs ($1,500), social stigma, and severe privacy backlash over public cameras—lacking a defensible consumer use case[cite: 14].  
+  * **The Fix:** Formulated a turnaround strategy stripping out the expensive visual prism to create a discreet, audio-first assistive wearable for visually impaired students, backed by primary user interviews and non-profit/government distribution channels[cite: 14].  
+  * **Deliverables:** [Read Strategy Memo](./teardowns-and-turnarounds/google-glass-turnaround/STRATEGY_MEMO.md)
 
 ---
 
 ## 🛠️ Core Competencies & Tooling
 
-* **AI & Agentic Systems:** Structured Output Validation, Schema Enforcement, Context Budgeting, Model Provider Benchmarking (TTFT vs. Cost), Prompt Engineering Guardrails.
-* **Technical Product Specs:** Relational Data Modeling (PostgreSQL / Supabase), REST & Real-Time Event Flows, BDD Acceptance Criteria (`Given/When/Then`).
-* **Product Strategy & Growth:** Metric Trees ($L_0$ North Star to $L_2$ System Metrics), Funnel Teardowns, User Journey Mapping, Market Viability Modeling.
+* **AI & Agentic Systems:** Structured Output Validation, Schema Enforcement, Context Budgeting, Model Provider Benchmarking (TTFT vs. Cost), Spoken Audio Prompt Guardrails.
+* **Technical Product Specs:** Relational Data Modeling (PostgreSQL / Supabase), REST & Real-Time Event Flows, BDD Acceptance Criteria (`Given/When/Then`), MoSCoW Prioritization.
+* **Product Strategy & Growth:** Quantitative User Surveys, Funnel Teardowns, User Journey Mapping, Metric Trees ($L_0$ North Star to $L_2$ System Metrics), Market Viability Modeling.
