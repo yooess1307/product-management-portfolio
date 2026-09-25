@@ -46,3 +46,17 @@ End-to-end technical specifications, state architectures, and functional prototy
      - If used correctly, praise them specifically on why it worked, then ask if they want the next word or a harder challenge.
      - If used incorrectly or unnaturally, gently explain the nuance, provide a corrected variation, and encourage them to try again.
   5. Tone: Warm, energetic, concise, and conversational. Avoid bullet points, symbols, or asterisks since this is spoken audio.
+  ```
+  
+---
+
+### 🔍 2. Product Teardowns and Turnarounds
+Deep-dives into conversion bottlenecks, trust & safety friction, and strategic product pivots.
+
+* **BlaBlaCar — Fixing the Last-Mile Coordination Gap**  
+  *Product Teardown, Trust & Safety UX, and Anonymized VoIP Architecture*  
+  * **About the Platform:** A community-based carpooling platform connecting drivers with empty seats to passengers looking for a ride to share travel costs.  
+  * **The Problem:** In-app messaging lag at highway speeds backs users into a corner—forcing drivers and passengers to sacrifice their personal phone numbers off-platform just to coordinate crowded roadside pickups.  
+  * **The Fix:** Scoped an anonymized in-app VoIP calling MVP and pinpoint location sharing flow, backed by MoSCoW backlog prioritization, persona journey mapping, and verified App Store user complaints.  
+  * **Deliverables:** [View Slide Deck (PDF) ↗](./teardowns-and-turnarounds/BlaBlaCar_Product_Teardown_Last_Mile_Coordination.pdf)[cite: 7] • [LinkedIn Post ↗](https://lnkd.in/p/gtzZGCg5)
+  
