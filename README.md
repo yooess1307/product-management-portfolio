@@ -58,5 +58,5 @@ Deep-dives into conversion bottlenecks, trust & safety friction, and strategic p
   * **About the Platform:** A community-based carpooling platform connecting drivers with empty seats to passengers looking for a ride to share travel costs.  
   * **The Problem:** In-app messaging lag at highway speeds backs users into a corner—forcing drivers and passengers to sacrifice their personal phone numbers off-platform just to coordinate crowded roadside pickups.  
   * **The Fix:** Scoped an anonymized in-app VoIP calling MVP and pinpoint location sharing flow, backed by MoSCoW backlog prioritization, persona journey mapping, and verified App Store user complaints.  
-  * **Deliverables:** [View Slide Deck (PDF) ↗](./teardowns-and-turnarounds/BlaBlaCar_Product_Teardown_Last_Mile_Coordination.pdf)[cite: 7] • [LinkedIn Post ↗](https://lnkd.in/p/gtzZGCg5)
+  * **Deliverables:** [View Slide Deck (PDF) ↗](./BlaBlaCar_Product_Teardown_Last_Mile_Coordination.pdf.pdf) • [LinkedIn Post ↗](https://lnkd.in/p/gtzZGCg5)
   
