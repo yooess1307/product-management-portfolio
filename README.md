@@ -24,33 +24,25 @@ End-to-end technical specifications, state architectures, and functional prototy
   * **Solution:** Replaced stateless chat with an asynchronous extraction worker (`learnFromExchange`) linked via Supabase, enforcing typed state schemas and micro-prompt injection (<150 tokens).  
  * **Deliverables:** [Full Technical PRD](./agentic-ai-projects/recall-tutor/PRD.md) • [Live Prototype ↗](https://recall-buddy-00.lovable.app)
 
-* **[Conversational Voice AI Agent](./agentic-ai-projects/conversational-voice-ai/SYSTEM_SPEC.md)**  
-  *Low-Latency Voice Architecture & Real-Time Orchestration.*  
-  * **Core Problem:** Turn-taking lag and conversational latency in spoken AI interfaces break human conversational flow.  
-  * **Solution:** Real-time audio pipeline evaluating streaming transcription, interruption detection, and sub-800ms TTFT responses.  
-  * **Deliverables:** [System Specification & Latency Evals](./agentic-ai-projects/conversational-voice-ai/SYSTEM_SPEC.md)
+* **VocabCoach — Voice-First Vocabulary Tutor**  
+  *Spoken English Practice & Conversational Prompt Design*  
+  * **The Problem:** Most AI voice tutors sound like someone reading a Wikipedia article out loud. They drone on with long definitions and generate formatting (bullet points, asterisks) that trips up speech engines—leaving the user listening passively instead of practicing.  
+  * **The Fix:** Built an interactive voice coach on ElevenLabs designed for natural spoken dialogue rather than text chat. It teaches one word at a time, caps explanations at two sentences using a relatable analogy, strips out markdown so the speech engine never stumbles, and immediately asks the user to use the word in an original sentence out loud before giving instant, constructive feedback.  
+  * **Live Demo:** [Talk to VocabCoach ↗](https://elevenlabs.io/app/talk-to?agent_id=agent_9001m32hq75gf9nr6pd2vzgkvwv6&branch_id=agtbrch_3601m32hq8btftgr173zyq1rarfn)
 
----
+  <details>
+  <summary><b>View System Prompt & Voice Rules</b></summary>
 
-### 🔍 2. Product Teardowns & Turnaround Strategies
-Deep-dives into conversion bottlenecks, trust & safety friction, and strategic product pivots.
-
-* **BlaBlaCar — Fixing the Last-Mile Coordination Gap**  
-  *Product Teardown, Trust & Safety UX, and Anonymized VoIP Architecture*  
-  * **About the Platform:** A community-based carpooling platform connecting drivers with empty seats to passengers traveling long distances to share travel costs[cite: 15].  
-  * **The Problem:** In-app messaging lag at highway speeds backs users into a corner—forcing drivers and passengers to sacrifice their personal phone numbers off-platform just to coordinate crowded roadside pickups[cite: 15].  
-  * **The Fix:** Scoped an anonymized in-app VoIP calling MVP and pinpoint location sharing flow, backed by MoSCoW backlog prioritization, persona journey mapping, and verified App Store user complaints[cite: 15].  
- * **Deliverables:** [View Slide Deck (PDF) ↗](./teardowns-and-turnarounds/BlaBlaCar_Product_Teardown_Last_Mile_Coordination.pdf) • [LinkedIn Post ↗](https://lnkd.in/p/gtzZGCg5)
-* **[CRED — Deal of the Day Checkout Optimization](./teardowns-and-turnarounds/cred-checkout-optimization/CASE_STUDY.md)**  
-  *Funnel Teardown & Multi-Item Cart UX*  
-  * **The Problem:** CRED's single-item checkout loop forces shoppers to repeatedly unlock and pay for items one-by-one. Survey data revealed 50% of users abandoned purchasing additional daily deals due to repetitive checkout fatigue.  
-  * **The Fix:** Designed a unified "Add to Deal Cart" flow with single-transaction checkout, eliminating repetitive navigation loops and recovering lost basket size.  
-  * **Deliverables:** [Read Funnel Teardown](./teardowns-and-turnarounds/cred-checkout-optimization/CASE_STUDY.md)
-
-* **[Google Glass — Audio-First Accessibility Pivot](./teardowns-and-turnarounds/google-glass-turnaround/STRATEGY_MEMO.md)**  
-  *Failure Autopsy & Strategic Repositioning Memo*  
-  * **The Problem:** Google Glass collapsed under high hardware costs ($1,500), social stigma, and severe privacy backlash over public cameras—lacking a defensible consumer use case.  
-  * **The Fix:** Formulated a turnaround strategy stripping out the expensive visual prism to create a discreet, audio-first assistive wearable for visually impaired students, backed by primary user interviews and non-profit/government distribution channels.  
-  * **Deliverables:** [Read Strategy Memo](./teardowns-and-turnarounds/google-glass-turnaround/STRATEGY_MEMO.md)put Validation, Schema Enforcement, Context Budgeting, Model Provider Benchmarking (TTFT vs. Cost), Spoken Audio Prompt Guardrails.
-* **Technical Product Specs:** Relational Data Modeling (PostgreSQL / Supabase), REST & Real-Time Event Flows, BDD Acceptance Criteria (`Given/When/Then`), MoSCoW Prioritization.
-* **Product Strategy & Growth:** Quantitative User Surveys, Funnel Teardowns, User Journey Mapping, Metric Trees ($L_0$ North Star to $L_2$ System Metrics), Market Viability Modeling.
+  ```text
+  You are VocabCoach, an encouraging, interactive, voice-first vocabulary tutor. Your goal is to help users learn and actively speak new high-impact words.
+  Guidelines for conversation:
+  1. One Word at a Time: Teach one word per round (e.g., Pragmatic, Ephemeral, Resilient, Ubiquitous, Diligent).
+  2. Voice-Optimized: Keep all spoken explanations concise (maximum 2 short sentences). Never recite long dictionary definitions.
+  3. Active Recall Loop:
+     - Introduce the word and pronounce it clearly.
+     - Explain its meaning using a simple, relatable real-world analogy.
+     - Prompt the user to use the word in a sentence out loud.
+  4. Evaluation: When the user speaks their sentence:
+     - If used correctly, praise them specifically on why it worked, then ask if they want the next word or a harder challenge.
+     - If used incorrectly or unnaturally, gently explain the nuance, provide a corrected variation, and encourage them to try again.
+  5. Tone: Warm, energetic, concise, and conversational. Avoid bullet points, symbols, or asterisks since this is spoken audio.
