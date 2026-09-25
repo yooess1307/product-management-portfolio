@@ -4,15 +4,6 @@ Passionate Product Manager specializing in **Agentic AI systems, Technical PRDs,
 
 ---
 
-## 👨‍💻 About Me & Product Philosophy
-
-With an academic foundation in Finance (BBA, Netaji Subhas University of Technology) and hands-on experience across operations and growth, I approach product management through two core principles:
-
-1. **System-First Architecture Over Prompt Wrappers:** GenAI products succeed or fail on state management, context budgeting, and structured data contracts. I build agentic prototypes that solve hallucination, latency, and context amnesia at the system level.
-2. **Ruthless Unit Economics & Funnel Rigor:** Whether reducing drop-off friction in checkout funnels or optimizing LLM Time-to-First-Token (TTFT), every feature must tie back to measurable business viability and user retention.
-
----
-
 ## 📂 Repository Index
 
 ### 🤖 1. Agentic AI Projects
@@ -69,7 +60,9 @@ Deep-dives into conversion bottlenecks, trust & safety friction, and strategic p
 * **[CRED — Deal of the Day Checkout Optimization](./CRED_Checkout_Optimization.pdf.pdf)**  
   *Funnel Teardown, Quantitative User Research, and Multi-Item Cart UX*  
   * **About the Platform:** A high-trust credit card payment and rewards platform in India that offers curated e-commerce drops and daily flash promotions via the CRED Store.  
-  * **The Problem Statement:** CRED users find it tedious to navigate back to the 'Deal of the Day' section repeatedly for unlocking prices and checking out items one by one. Because unlocking immediately triggers a single-item payment bottom sheet (`Pay instantly`), purchasing multiple deals forces users through redundant payment authorizations and address confirmations.  
-  * **The Friction Proof:** Primary survey data revealed 50% of users abandoned purchasing additional daily deals specifically due to repetitive transaction fatigue, with 50% noting repeated detail entry actively deterred them from buying more.  
-  * **The Fix:** Replaced the immediate buy-now lock-in with an "Add to Deal Cart" aggregation drawer and unified single-swipe checkout, eliminating redundant navigation loops and recovering lost basket size.  
-  * **Validation & Impact:** 72.7% of surveyed shoppers confirmed a unified checkout directly improved their purchase experience, with 66.7% expressing high willingness to purchase multiple daily deals in a single transaction.
+  * **The Problem Statement:** CRED users find it tedious to navigate back to the 'Deal of the Day' section repeatedly for unlocking prices and checking out items one by one. Because unlocking immediately triggers a single-item payment bottom sheet (`Pay instantly`), purchasing multiple deals forces users through redundant payment authorizations and address confirmations.
+   
+* **[Google Glass — Audio-First Assistive Turnaround Strategy](./Google_Glass_Turnaround_Strategy.pdf)**  
+  *Hardware Pivot, Assistive Tech Architecture, and Institutional GTM*  
+  * **About the Product:** An optical head-mounted wearable computer developed by Google X, designed as a hands-free device that projected notifications, navigation, and capture tools directly into the user's field of vision via a micro-display prism.  
+  * **Document Scope:** Failure autopsy, customer journey friction mapping, assistive user persona, and the audio-first turnaround strategy.
