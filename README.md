@@ -52,6 +52,7 @@ End-to-end technical specifications, state architectures, and functional prototy
   * **What It Is:** An AI interview copilot that provides role-specific mock interviews (tailored for roles like Product Managers and Software Engineers), structured multi-metric feedback reports (evaluating pace, filler words, and content quality), and industry benchmark scores against peer candidates.  
   * **The Problem It Solves:** Job seekers deal with intense preparation anxiety and lack realistic, structured ways to practice. Human coaching is expensive and difficult to schedule, peer-to-peer mocks require coordinated availability, and generic online guides fail to give candidates objective, data-backed feedback on where their performance actually stands.  
   * **The GTM Strategy:** A lean, 3-stage distribution roadmap designed to scale from 0 to 10,000 users in 6 months on a near-zero initial CAC.
+  * **Campaign Assets:** [Launch Poster 1 ↗](./HireMate_Launch_Poster_1.jpg) • [Launch Poster 2 ↗](./HireMate_Launch_Poster_2.jpg)
   
 ---
 
