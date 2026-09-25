@@ -58,4 +58,12 @@ Deep-dives into conversion bottlenecks, trust & safety friction, and strategic p
   * **About the Platform:** A community-based carpooling platform connecting drivers with empty seats to passengers looking for a ride to share travel costs.  
   * **The Problem:** In-app messaging lag at highway speeds backs users into a corner—forcing drivers and passengers to sacrifice their personal phone numbers off-platform just to coordinate crowded roadside pickups.  
   * **The Fix:** Scoped an anonymized in-app VoIP calling MVP and pinpoint location sharing flow, backed by MoSCoW backlog prioritization, persona journey mapping, and verified App Store user complaints.  
-  * **Public Breakdown:** [View Discussion & 9-Slide Carousel on LinkedIn ↗](https://lnkd.in/p/gtzZGCg5)
+  * **Public Breakdown:** [View Discussion on LinkedIn ↗](https://lnkd.in/p/gtzZGCg5)
+
+* **[CRED — Deal of the Day Checkout Optimization](./CRED_Checkout_Optimization.pdf)**  
+  *Funnel Teardown, Quantitative User Research, and Multi-Item Cart UX*  
+  * **About the Platform:** A high-trust credit card payment and rewards platform in India that offers curated e-commerce drops and daily flash promotions via the CRED Store.  
+  * **The Problem Statement:** CRED users find it tedious to navigate back to the 'Deal of the Day' section repeatedly for unlocking prices and checking out items one by one. Because unlocking immediately triggers a single-item payment bottom sheet (`Pay instantly`), purchasing multiple deals forces users through redundant payment authorizations and address confirmations.  
+  * **The Friction Proof:** Primary survey data revealed 50% of users abandoned purchasing additional daily deals specifically due to repetitive transaction fatigue, with 50% noting repeated detail entry actively deterred them from buying more.  
+  * **The Fix:** Replaced the immediate buy-now lock-in with an "Add to Deal Cart" aggregation drawer and unified single-swipe checkout, eliminating redundant navigation loops and recovering lost basket size.  
+  * **Validation & Impact:** 72.7% of surveyed shoppers confirmed a unified checkout directly improved their purchase experience, with 66.7% expressing high willingness to purchase multiple daily deals in a single transaction.
