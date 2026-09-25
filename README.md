@@ -62,7 +62,7 @@ Deep-dives into conversion bottlenecks, trust & safety friction, and strategic p
   * **About the Platform:** A high-trust credit card payment and rewards platform in India that offers curated e-commerce drops and daily flash promotions via the CRED Store.  
   * **The Problem Statement:** CRED users find it tedious to navigate back to the 'Deal of the Day' section repeatedly for unlocking prices and checking out items one by one. Because unlocking immediately triggers a single-item payment bottom sheet (`Pay instantly`), purchasing multiple deals forces users through redundant payment authorizations and address confirmations.
    
-* **[Google Glass — Audio-First Assistive Turnaround Strategy](./Google_Glass_Turnaround_Strategy.pdf)**  
+* **[Google Glass — Audio-First Assistive Turnaround Strategy](./Google_Glass_Turnaround_Strategy.pdf.pdf)**  
   *Hardware Pivot, Assistive Tech Architecture, and Institutional GTM*  
   * **About the Product:** An optical head-mounted wearable computer developed by Google X, designed as a hands-free device that projected notifications, navigation, and capture tools directly into the user's field of vision via a micro-display prism.  
   * **Document Scope:** Failure autopsy, customer journey friction mapping, assistive user persona, and the audio-first turnaround strategy.
